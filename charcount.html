@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        textarea{
+            background-color: lch(85.48% 2.41 173.64);
+            font-size: 20px;
+            font-family: sans-serif;
+            font-weight: 600;
+            width: 400px;
+            height: 100px;
+        
+        }
+        div{
+            font-size: 20px;
+            font-weight: 600;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+   <textarea id="chatBox" placeholder="Write your message"></textarea>
+    <div id="countBtn">250 charactors remaining</div>
+    <script>
+        let chatbox = document.getElementById("chatBox");
+        let countbtn = document.getElementById('countBtn');
+        let maxlength = 250;
+        chatbox.addEventListener("input", ()=>{
+            let currentchar = chatbox.value.length;
+            let remaingchar = maxlength - currentchar;
+            countbtn.textContent = remaingchar + " " + "remaining charactors";
+            if(remaingchar<0){
+                countbtn.classList.add("warning");
+                countbtn.textContent = "Limit exceeded by " + " " + Math.abx(remaingchar) + " " + "charators";
+            }
+            else{
+                countbtn.classList.remove("warning");
+            }
+        });
+    </script>
+</body>
+</html>
